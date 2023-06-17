@@ -3,9 +3,11 @@ import * as THREE from 'three';
 import * as dat from 'dat.gui';
 import bg from './bg2.jpg'
 import bg3 from './bg3.png'
+import bg4 from './bg4.jpg'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const gui = new dat.GUI()
 const scene = new THREE.Scene();
+
 const loader = new THREE.TextureLoader()
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
 var meshPosition = new THREE.Vector3();
@@ -16,7 +18,7 @@ let device = {
   aspect: innerWidth / innerHeight
 }
 const tx = loader.load(bg)
-const tx2 = loader.load(bg3)
+const tx2 = loader.load(bg4)
 const renderer = new THREE.WebGLRenderer({
   alpha: true
 });
@@ -30,7 +32,7 @@ document.body.appendChild(renderer.domElement);
 
 const sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5, 62, 62)
   , new THREE.MeshStandardMaterial({
-    color: 'blue',
+    // color: 'blue',
     roughness: 1,
     map: tx,
 
@@ -42,7 +44,6 @@ const sphere2 = new THREE.Mesh(
   new THREE.MeshStandardMaterial({
     roughness: 1,
     map: tx2,
-
   }))
 sphere2.position.set(-0.34, 0.07, -0.53)
 const group = new THREE.Group()
@@ -71,7 +72,7 @@ for (let i = 0; i < 10000; i++) {
 
 }
 
-geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3,true));
 const particles = new THREE.Points(geometry, new THREE.PointsMaterial({ color: 0x888888 }));
 scene.add(particles);
 // gui.add(pointLight.position,'x').min(5).max(50)
