@@ -2,7 +2,9 @@ import './style.css'
 import * as THREE from 'three';
 import * as dat from 'dat.gui';
 import bg from './bg2.jpg'
-import bg3 from './bg3.png'
+// import bmap from './bmap.png'
+// import dmap from './dispalcemap.png'
+// import bg3 from './bg3.png'
 import bg4 from './bg4.jpg'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const gui = new dat.GUI()
@@ -44,6 +46,10 @@ const sphere2 = new THREE.Mesh(
   new THREE.MeshStandardMaterial({
     roughness: 1,
     map: tx2,
+    // bumpMap:loader.load(bmap),
+    // displacementMap:loader.load(dmap),
+    // displacementScale:0,
+    // lightMap:loader.load(bg3)
   }))
 sphere2.position.set(-0.34, 0.07, -0.53)
 const group = new THREE.Group()
